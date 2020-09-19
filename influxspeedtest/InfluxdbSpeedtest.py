@@ -174,5 +174,8 @@ class InfluxdbSpeedtest():
             else:
                 for server in config.servers:
                     self.run_speed_test(server)
-            log.info('Waiting %s seconds until next test', config.delay)
-            time.sleep(config.delay)
+            if config.delay > 0:
+                log.info('Waiting %s seconds until next test', config.delay)
+                time.sleep(config.delay)
+            else:
+                break
